@@ -31,5 +31,4 @@
         }
     );
 });
-
 // Credit: https://css-tricks.com/jquery-magicline-navigation

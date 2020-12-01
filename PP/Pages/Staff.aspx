@@ -19,6 +19,8 @@
     <script src="../Scripts/Navbar.js"></script>
     <link rel="stylesheet" href="/Preloader.css"/>
 
+
+
     <script>
         window.onload = function () {
             let preloader = document.getElementById('preloader');
@@ -108,17 +110,9 @@
 
         .card {
             top: 15%;
-            bottom:25%;
+            bottom:40%;
             background: #0b0d0f;
             position: absolute;
-        }
-        #magic-line {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100px;
-          height: 4px;
-          background: #4B0082;
         }
       
     </style>
@@ -134,10 +128,7 @@
                 <div class="cssload-tetromino cssload-box3"></div>
                 <div class="cssload-tetromino cssload-box4"></div>
             </div>
-        </div>
-        
-
-
+        </div>   
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-8 card ">
@@ -149,54 +140,48 @@
                                 <asp:TextBox class="form-control" ID="tbName" runat="server" type="search"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="tbName1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbName" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="tbName2" ControlToValidate="tbName" ValidationExpression="^[а-яА-Я]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
-
                             </div>
                             <div class="form-group col-md-4">
                                 <label class="lblText">Фамилия</label>
                                 <asp:TextBox class="form-control" ID="tbSurname" type="search" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="tbSurname1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbSurname" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="tbSurname2" ControlToValidate="tbSurname" ValidationExpression="^[а-яА-Я]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
-
                             </div>
                             <div class="form-group col-md-4">
                                 <label class="lblText">Отчество</label>
                                 <asp:TextBox class="form-control" ID="tbMiddleName" type="search" runat="server"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="tbMiddleName1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbMiddleName" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="tbMiddleName2" ControlToValidate="tbMiddleName" ValidationExpression="^[а-яА-Я]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
-
-                            </div>
-                        </div>
-                        <div class="form-row col-12">
-                            <div class="form-group col-md-12">
-                                <label class="lblText">Дата рождения</label>
-                                <asp:TextBox class="form-control" ID="tbBirthDate" TextMode="date" type="date" MaxLength="8" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="tbBirthDate1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbBirthDate" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
                             </div>
                         </div>
                         <div class="form-row col-12">
                             <div class="form-group col-md-4">
+                                <label class="lblText">Дата рождения</label>
+                                <asp:TextBox class="form-control" ID="tbBirthDate" TextMode="date" type="date" MaxLength="8" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="tbBirthDate1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbBirthDate" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
+                             </div>
+                                <div class="form-group col-md-4">
+                                <label class="lblText">Электронная почта</label>
+                                <asp:TextBox class="form-control" ID="tbEmail" type="search" runat="server"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbEmail" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>                                                     
+                            </div>
+                              <div class="form-group col-md-4">
                                 <label class="lblText">Логин</label>
                                 <asp:TextBox class="form-control" ID="tbLogin" runat="server" type="search"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="tbLogin1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbLogin" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="tbLogin2" ControlToValidate="tbLogin" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
                             </div>
-                            <div class="form-group col-md-4">
-                                <label class="lblText">Пароль</label>
-                                <asp:TextBox class="form-control" ID="tbPassword" runat="server" type="search"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="tbPassword1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbPassword" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="tbPassword2" ControlToValidate="tbPassword" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
-
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label style="white-space: nowrap;" class="lblText">Подтверждение пароля</label>
-                                <asp:TextBox class="form-control" ID="tbConfirmPassword" type="search" runat="server"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="tbConfirmPassword1" runat="server" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbConfirmPassword" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="tbConfirmPassword2" ControlToValidate="tbConfirmPassword" ValidationExpression="^[а-яА-ЯёЁa-zA-Z0-9]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
-
-                            </div>
+                        </div>
+                        <div class="form-row col-12">                            
+                            <div class="form-group col-md-6">
+                                <asp:TextBox class="form-control" ID="tbPassword" runat="server" Visible="false" type="search" Text="11111111"></asp:TextBox>
+                                </div>     
+                              <div class="form-group col-md-6">
+                                <asp:TextBox class="form-control" ID="tbPosition" runat="server" Visible="false" type="search" Text="Неназначена"></asp:TextBox>
+                                </div>
                         </div>
                         <div style="margin-top:30px" class="form-row col-12" >                            
-                                <asp:Button ID="btInsert" class="btn btn-outline-danger btn-block btn-lg col-lg-12" runat="server" Text="Зарегистрироваться" />                            
+                                <asp:Button ID="btInsert" class="btn btn-outline-danger btn-block btn-lg col-lg-12" runat="server" Text="Зарегистрироваться" OnClick="btInsert_Click" />                            
                         </div>
                     </div>
                 </div>

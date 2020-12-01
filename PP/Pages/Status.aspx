@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Status.aspx.cs" Inherits="PP.Pages.Status" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Status.aspx.cs" Inherits="PP.Pages.Status" EnableEventValidation="false" %> <%--//надо--%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +15,33 @@
     <script src="../Scripts/jquery.maskedinput.min.js"></script>
     <script src="../Scripts/Navbar.js"></script>
     <link rel="stylesheet" href="/Preloader.css"/>
+    <link rel="stylesheet" href="../Scripts/Button.css" />
     <title>Статус</title>
+<script src="../scripts/jquery-3.4.1.min.js"></script>
+<script src="../scripts/jquery-3.4.1.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function test(e) {
+            var keynum;
+            if (window.event) // IE
+            {
+                keynum = e.keyCode
+            }
+            else if (e.which) // webkit
+            {
+                keynum = e.which
+            }
+            if (keynum == 13) __doPostback('btSearch', '');
+        }
+    </script>
+                            
+     <script type="text/javascript">
+         function isDelete() {
+             return confirm("Вы уверенны, что хотите удалить выбранную запись?");
+         }
+     </script>
 
     <script>
         window.onload = function () {
@@ -96,6 +122,67 @@
             color: red;
         }
 
+        table{
+            cursor: pointer;
+            text-align: center;
+        }   
+        table td{
+            font-size:22px;
+        }   
+        table th{
+             font-size:22px;
+        }   
+        
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: chartreuse;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            display: inline-block;
+            padding: 7px 20px;
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .navbar a:after {
+            background: none repeat scroll 0 0 transparent;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            position: absolute;
+            background: chartreuse;
+            transition: width 0.3s ease 0s, left 0.3s ease 0s;
+            width: 0;
+        }
+
+        .navbar a:hover:after {
+            width: 100%;
+            left: 0;
+        }
+
+        .Helper{
+            font-size: 23px;
+            color: black;
+        }
+
+          .Helper2{
+            font-size: 15px;
+            color: black;
+        }    
+          
+          #btSearch{
+              font-size: 12px;
+            border-radius: 10px;
+          }
+            
+        
+          
     </style>
 </head>
 <body>
@@ -109,34 +196,76 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Модальное окно -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Поддержка <i class="fa fa-commenting" aria-hidden="true"></i></h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body row justify-content-center">
+                            <div class="form-group col-12">
+                                <label class="Helper ">Имя</label>
+                                <asp:TextBox class="form-control" ID="tbNameHelp"  runat="server" type="search"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="tbNameHelp1" runat="server" ValidationGroup="1" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbNameHelp" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group col-12">
+                                <label class="Helper">Почта</label>
+                                <asp:TextBox class="form-control" ID="tbMailHelp" runat="server" type="search"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="tbMailHelp1" runat="server"  ValidationGroup="1" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbMailHelp" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
+                            
+                            </div>
+                            <div class="form-group col-12">
+                                <label class="Helper">Описание проблемы</label>
+                                <asp:TextBox class="form-control" ID="tbHelp" runat="server" type="search"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="tbHelp1" runat="server" ValidationGroup="1" ErrorMessage="Поле не должно быть пустым" class="error" ControlToValidate="tbHelp" Display="Dynamic" EnableClientScript="true"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="form-group col-12">
+                                <asp:Label ID="Info" runat="server" class="Helper">Контактная информация <i class="fa fa-book" aria-hidden="true"></i> </asp:Label>
+                                </div>
+                                 <div class="form-group col-12">                                     
+                               <asp:Label ID="lblmailinfo" runat="server" class="Helper2">Почта для обратной связи: i_a.s.popov@mpt.ru</asp:Label>
+                                     </div>
+                                     <div class="form-group col-12">   
+                               <asp:Label ID="lblnumberinfo" runat="server" class="Helper2">Номер телефона: 8 (333) 333-33-33 </asp:Label>
+                                         </div>
+                                         <div class="form-group col-12">   
+                                <asp:Label ID="lbladressinfo" runat="server" class="Helper2">Адрес: Нежинская д. 7</asp:Label>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <asp:Button type="button" runat="server" class="btn btn-secondary" data-dismiss="modal" CausesValidation="false" Text="Отмена"></asp:Button>
+                            <asp:Button type="button" runat="server" class="btn btn-primary" OnClick="btSendHelp_Click" ValidationGroup="1" Text="Отправить"></asp:Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">                   
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="DropKadrovik" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы сотрудников отдела кадров
+                    <li class="nav-item">
+                        <a class="nav-link " href="StaffList.aspx" id="StaffList" aria-haspopup="true" aria-expanded="false">Список сотрудников
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">                            
-                            <a class="dropdown-item fa fa-address-book-o" href="#">  Список сотрудников</a>
-                        </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="DropOxrana" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы сотрудников охраны
+                    <li class="nav-item">
+                        <a class="nav-link" href="Position.aspx" id="Position" aria-haspopup="true" aria-expanded="false">Справочник должностей
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">                            
-                            <a class="dropdown-item fa fa-address-book-o" href="#">  Список сотрудников</a>
-                        </div>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="DropAdmin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы администратора
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="Status.aspx" id="Status" aria-haspopup="true" aria-expanded="false">Справочник статусов
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item fa fa-book fa-fw" href="#">  Список статусов</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item fa fa-book fa-fw" href="#">  Список должностей</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item fa fa-address-book-o" href="#">  Список сотрудников</a>
-                        </div>
                     </li>
+                     <li class="nav-item ">
+                        <a class="nav-link" href="Documents.aspx" id="Documents" aria-haspopup="true" aria-expanded="false">Статус сотрудников
+                        </a>
+                    </li>
+                    <li>
+                    <button type="button" class="btn third" data-toggle="modal" data-target="#myModal"> <i class="fa fa-envelope-o" aria-hidden="true"></i> Поддержка</button> 
+                        </li>
                 </ul>
                
             </div>
@@ -152,9 +281,12 @@
         <h1 class="title">Статус</h1>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-sm-10 col-md-8 col-lg-6">
-                    <asp:TextBox class="form-control" ID="tbSearch" runat="server" type="search"></asp:TextBox>
-                </div>
+                 <div class="col-sm-10 col-md-8 col-lg-6">
+                    <asp:TextBox class="form-control" ID="tbSearch" runat="server" type="search"></asp:TextBox> 
+                      </div>
+                    <div class="col col-md-2">
+                      <asp:Button ID="btSearch" class="btn btn-outline-danger btn-block btn-lg" runat="server" Text="Поиск" />
+                 </div>
             </div>
             <div class="row justify-content-center">
                     <div class="form-group col-md-4">
@@ -164,15 +296,23 @@
                         <asp:RegularExpressionValidator ID="tbName2" ControlToValidate="tbName" ValidationExpression="^[а-яА-Я]+$" ErrorMessage="Некорректный ввод символов" Display="Dynamic" class="error" EnableClientScript="true" runat="server" />
                 </div>
             </div>
-
+         <%--   //надо--%>
+            
             <div class="row justify-content-center">
-                <asp:GridView ID="gvStatus" runat="server" Class="table table-dark" AllowSorting="True" CurrentSortDirection="ASC" Font-Size="16px" AlternatingRowStyle-Wrap="false"
-                    HeaderStyle-HorizontalAlign="Center" OnRowDataBound="gvStatus_RowDataBound">
-                    <Columns>
-                        <asp:CommandField ShowSelectButton="true" SelectText="Выбрать" />
-                    </Columns>
+                  <div class=" col-lg-8">
+                <asp:GridView ID="gvStatus" runat="server" Class="table table-dark table-condensed table-hover" AllowSorting="True" CurrentSortDirection="ASC" Font-Size="16px" AlternatingRowStyle-Wrap="false"
+                    HeaderStyle-HorizontalAlign="Center" OnRowDataBound="gvStatus_RowDataBound" OnSelectedIndexChanged="gvStatus_SelectedIndexChanged" OnRowDeleting="gvStatus_RowDeleting">
+                     <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:ImageButton ID="btDelete" runat="server" ImageUrl="~/Image/block.svg"  ControlStyle-Width="50px" CommandName="Delete" OnClientClick="return isDelete()" ToolTip="Удалить" CausesValidation="false"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
                 </asp:GridView>
             </div>
+
+                </div>
 
             <div class="form-row col-12">
                 <div class="form-group col-md-6">

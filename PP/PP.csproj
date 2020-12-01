@@ -119,16 +119,24 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Image\block.svg" />
     <Content Include="Image\icon.jpg" />
+    <Content Include="Music\Dorozhka_4_-_dlitelnost-3.23_kachestvo_zvuka-256_kbit_sek_v_formate_mr3_6.21_Mb_vozmozhen_perevod_v_%28Gybka.com%29.mp3" />
+    <Content Include="Music\Type Beat - Fallin %28www.hotplayer.ru%29.mp3" />
+    <Content Include="Music\Type Beat 2020 - Trap %28www.hotplayer.ru%29.mp3" />
+    <Content Include="Pages\Authorization.aspx" />
+    <Content Include="Pages\Documents.aspx" />
     <Content Include="Pages\Position.aspx" />
     <Content Include="Pages\Staff.aspx" />
     <Content Include="Pages\StaffList.aspx" />
     <Content Include="Pages\Status.aspx" />
+    <Content Include="Pages\Waiting.aspx" />
     <Content Include="Preloader.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Button.css" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -292,6 +300,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Authorization.aspx.cs">
+      <DependentUpon>Authorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Authorization.aspx.designer.cs">
+      <DependentUpon>Authorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Documents.aspx.cs">
+      <DependentUpon>Documents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Documents.aspx.designer.cs">
+      <DependentUpon>Documents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Position.aspx.cs">
       <DependentUpon>Position.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +341,13 @@
     </Compile>
     <Compile Include="Pages\Status.aspx.designer.cs">
       <DependentUpon>Status.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Waiting.aspx.cs">
+      <DependentUpon>Waiting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Waiting.aspx.designer.cs">
+      <DependentUpon>Waiting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

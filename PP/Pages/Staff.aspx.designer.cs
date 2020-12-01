@@ -132,6 +132,24 @@ namespace PP.Pages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator tbBirthDate1;
 
         /// <summary>
+        /// tbEmail элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEmail;
+
+        /// <summary>
+        /// RequiredFieldValidator1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// tbLogin элемент управления.
         /// </summary>
         /// <remarks>
@@ -168,49 +186,13 @@ namespace PP.Pages
         protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
-        /// tbPassword1 элемент управления.
+        /// tbPosition элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator tbPassword1;
-
-        /// <summary>
-        /// tbPassword2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator tbPassword2;
-
-        /// <summary>
-        /// tbConfirmPassword элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConfirmPassword;
-
-        /// <summary>
-        /// tbConfirmPassword1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator tbConfirmPassword1;
-
-        /// <summary>
-        /// tbConfirmPassword2 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator tbConfirmPassword2;
+        protected global::System.Web.UI.WebControls.TextBox tbPosition;
 
         /// <summary>
         /// btInsert элемент управления.

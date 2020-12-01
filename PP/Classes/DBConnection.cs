@@ -14,9 +14,11 @@ namespace PP.Classes
               " Initial Catalog = PP_DEMO; Persist Security Info = true;" +
               " User ID = sa; Password = \"psl14082001\"");
 
+        public static string qrFio = "select * from [Fio_View]";
+
         //Таблица персонал (Запрос работает?)
         public DataTable dtStaff = new DataTable("Staff");
-        public static string qrStaff = "SELECT [ID_Staff], [Number] as \"Номер\"," +
+        public static string qrStaff = "SELECT [ID_Staff] as \"Номер сотрудника\", " +
             "[Surname] as \"Фамилия\", [dbo].[Staff].[Name] as \"Имя\", [MiddleName] as \"Отчество\", [Birthdate] as \"Дата рождения\"," +
             "[dbo].[Staff].[Position_ID], [dbo].[Position].[Name] as \"Название должности\"," +
             "[dbo].[Staff].[Authorization_ID], [Login] as \"Логин\", [Password] as \"Пароль\"  FROM [dbo].[Staff]" +
@@ -34,8 +36,18 @@ namespace PP.Classes
         //Таблица список персонала (Запрос работает?)
         public DataTable dtStaffList = new DataTable("StaffList");
         public static string qrStaffList = "SELECT [ID_StaffList], " +
-            "[dbo].[StaffList].[Status_ID], [Name] as \"Название статуса\"," +
-            "[dbo].[StaffList].[Staff_ID], [Number] as \"Номер сотрудника\", FROM [dbo].[StaffList]";
+            "[dbo].[StaffList].[Status_ID], [dbo].[Status].[Name] as \"Название статуса\"," +
+            "[dbo].[StaffList].[Staff_ID]  as \"Номер сотрудника\", [Surname] as \"Фамилия\", [Staff].[Name] as \"Имя\", [MiddleName] as \"Отчество\", [dbo].[Position].[Name] as \"Название должности\" FROM [dbo].[StaffList]" +
+            " INNER JOIN [dbo].[Staff] ON [dbo].[Staff].[ID_Staff] = [dbo].[StaffList].[Staff_ID]" +
+            " INNER JOIN [dbo].[Position] ON [dbo].[Position].[ID_Position] = [dbo].[Staff].[Position_ID]" +
+            " INNER JOIN [dbo].[Status] ON [dbo].[StaffList].[Status_ID] = [dbo].[Status].[ID_Status]";
+
+  
+
+        public static Int32 ID_User = 0;
+        private SqlCommand command = new SqlCommand("", connection);
+        public static Int32 IDStaff, IDAuth, IDStatus, IDPos, IDStaffList, IDuser;
+
 
         public void dbEnter(string login, string password)
         {
@@ -47,9 +59,7 @@ namespace PP.Classes
             connection.Close();
         }
 
-        public static Int32 ID_User = 0;
-        private SqlCommand command = new SqlCommand("", connection);
-        public static Int32 IDStaff, IDAuth, IDStatus, IDPos, IDStaffList, IDuser;
+
         private void dtFill(DataTable table, string query)
         {
             command.CommandText = query;

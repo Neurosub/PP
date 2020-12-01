@@ -19,10 +19,9 @@ namespace PP.Classes
         }
          
         //Процедуры для персонала
-        public void spStaff_insert(string Number, string Surname, string Name, string MiddleName, string Birthdate, Int32 Authorization_ID, Int32 Position_ID)
+        public void spStaff_insert(string Surname, string Name, string MiddleName, string Birthdate, Int32 Authorization_ID, Int32 Position_ID)
         {
             commandConfig("Staff_insert");
-            command.Parameters.AddWithValue("@Number", Number);
             command.Parameters.AddWithValue("@Surname", Surname);
             command.Parameters.AddWithValue("@Name", Name);
             command.Parameters.AddWithValue("@MiddleName", MiddleName);
@@ -33,11 +32,10 @@ namespace PP.Classes
             command.ExecuteNonQuery();
             DBConnection.connection.Close();
         }
-        public void spStaff_update(Int32 ID_Staff, string Number, string Surname, string Name, string MiddleName, string Birthdate, Int32 Authorization_ID, Int32 Position_ID)
+        public void spStaff_update(Int32 ID_Staff, string Surname, string Name, string MiddleName, string Birthdate, Int32 Authorization_ID, Int32 Position_ID)
         {
             commandConfig("Staff_update");
             command.Parameters.AddWithValue("@ID_Staff", ID_Staff);
-            command.Parameters.AddWithValue("@Number", Number);
             command.Parameters.AddWithValue("@Surname", Surname);
             command.Parameters.AddWithValue("@Name", Name);
             command.Parameters.AddWithValue("@MiddleName", MiddleName);
@@ -92,16 +90,61 @@ namespace PP.Classes
 
         //Процедуры для регистрации
 
-        public void UsersRegistration(string Login, string Password, string Surname, string Name, string MiddleName, string Birthdate, Int32 Authorization_ID)
+        public void UsersRegistration(string Login, string Password, string Name1, string Surname, string Name, string MiddleName, string Birthdate)
         {
             commandConfig("Users_Registration");
             command.Parameters.AddWithValue("@Login", Login);
             command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Name1", Name1);
             command.Parameters.AddWithValue("@Surname", Surname);
             command.Parameters.AddWithValue("@Name", Name);
             command.Parameters.AddWithValue("@MiddleName", MiddleName);
             command.Parameters.AddWithValue("@Birthdate", Birthdate);
+            DBConnection.connection.Open();
+            command.ExecuteNonQuery();
+            DBConnection.connection.Close();
+        }
+        //Процедуры для добавления пользователя
+        public void Users_insert(string Login, string Password, string Name1, string Surname, string Name, string MiddleName, string Birthdate)
+        {
+            commandConfig("Users_insert");
+            command.Parameters.AddWithValue("@Login", Login);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Name1", Name1);
+            command.Parameters.AddWithValue("@Surname", Surname);
+            command.Parameters.AddWithValue("@Name", Name);
+            command.Parameters.AddWithValue("@MiddleName", MiddleName);
+            command.Parameters.AddWithValue("@Birthdate", Birthdate);
+            DBConnection.connection.Open();
+            command.ExecuteNonQuery();
+            DBConnection.connection.Close();
+        }
+
+        //Процедуры для изменения регистрации
+
+        public void Users_update(int ID_Staff, string Login, string Password, string Name1, string Surname, string Name, string MiddleName, string Birthdate)
+        {
+            commandConfig("Users_update");
+            command.Parameters.AddWithValue("@ID_Staff", ID_Staff);
+            command.Parameters.AddWithValue("@Login", Login);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.Parameters.AddWithValue("@Name1", Name1);
+            command.Parameters.AddWithValue("@Surname", Surname);
+            command.Parameters.AddWithValue("@Name", Name);
+            command.Parameters.AddWithValue("@MiddleName", MiddleName);
+            command.Parameters.AddWithValue("@Birthdate", Birthdate);
+            DBConnection.connection.Open();
+            command.ExecuteNonQuery();
+            DBConnection.connection.Close();
+        }
+
+        //Процедуры для удаление сотрудника
+        public void Users_delete(Int32 ID_Staff, Int32 Authorization_ID, Int32 Position_ID)
+        {
+            commandConfig("Users_delete");
+            command.Parameters.AddWithValue("@ID_Staff", ID_Staff);
             command.Parameters.AddWithValue("@Authorization_ID", Authorization_ID);
+            command.Parameters.AddWithValue("@Position_ID", Position_ID);
             DBConnection.connection.Open();
             command.ExecuteNonQuery();
             DBConnection.connection.Close();
